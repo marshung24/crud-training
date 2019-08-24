@@ -51,8 +51,8 @@
 
     // AJAX URL
     _ajaxUrls: {
-      list: '/controller_group_forder/controller/ajax',
-      edit: '/controller_group_forder/controller_edit/ajax',
+      // Account CRUD AJAX server side url.
+      accountApi: '/js_training/ajax',
     },
   };
 
@@ -95,6 +95,141 @@
      */
     var _initialize = function() {
       console.log('_initialize');
+
+      /**
+       * 新增一筆
+       */
+      $.ajax({
+        // 傳送方法
+        method: 'POST',
+        // 目標網址
+        url: self._ajaxUrls.accountApi,
+        // 傳送資料
+        data: { name: 'John', location: 'Boston' },
+        // 回傳資料格式
+        dataType: 'json',
+      }).done(function(data) {
+        // 處理回傳資料 - 印出json字串
+        $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+        // 輸出至console
+        console.log(data);
+      }).fail(function (jqXHR) {
+        // 處理回傳資料
+        $('<div>' + jqXHR.responseText + '</div>').appendTo($('.ctrl-message'));
+        console.log(jqXHR);
+      });
+
+
+
+      // /**
+      //  * 讀取全部
+      //  */
+      // $.ajax({
+      //   method: 'GET',
+      //   url: self._ajaxUrls.accountApi,
+      //   dataType: 'json',
+      // }).done(function(data) {
+      //   // 處理回傳資料 - 印出json字串
+      //   $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      //
+      //   /**
+      //    * 陣列資料配合$.each建立表格
+      //    */
+      //   // 建立變數
+      //   var tmp, table, thead, tbody, tr, th, td;
+      //   // 建立暫存容器
+      //   tmp = $('<div></div>');
+      //   // 建立thead區塊資料
+      //   thead = $('<thead></thead>').appendTo(tmp);
+      //   // 建立tbody區塊資料
+      //   tbody = $('<tbody></tbody>').appendTo(tmp);
+      //
+      //   // 建立標題
+      //   tr = $('<tr class="bg-info"></tr>').appendTo(thead);
+      //   $.each(data.head, function(index, value) {
+      //     th = $('<th>'+value+'</th>').appendTo(tr);
+      //   });
+      //
+      //   // 建立內容
+      //   $.each(data.data, function(index1, value1) {
+      //     tr = $('<tr></tr>').appendTo(tbody);
+      //     $.each(value1, function(index2, value2) {
+      //       td = $('<td>'+value2+'</td>').appendTo(tr);
+      //     });
+      //   });
+      //
+      //   // 取得table元件
+      //   table = $('.ctrl-table');
+      //   // 將暫存容器內容移至table元件
+      //   tmp.children().appendTo(table);
+      // });
+
+
+
+      // /**
+      //  * 讀取一筆
+      //  */
+      // $.ajax({
+      //   method: 'GET',
+      //   // 讀取id為3的資料
+      //   url: self._ajaxUrls.accountApi + '/3',
+      //   dataType: 'json',
+      // }).done(function(data) {
+      //   // 處理回傳資料
+      //   $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      // });
+
+
+
+      // /**
+      //  * 更新一筆
+      //  */
+      // $.ajax({
+      //   method: 'PUT',
+      //   url: self._ajaxUrls.accountApi,
+      //   data: { name: 'John', location: 'Boston' },
+      //   dataType: 'json',
+      // }).done(function(data) {
+      //   // 處理回傳資料
+      //   $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      // });
+
+
+
+      // /**
+      //  * 刪除錯誤 No Delete ID
+      //  */
+      // $.ajax({
+      //   method: 'DELETE',
+      //   url: self._ajaxUrls.accountApi,
+      //   dataType: 'json',
+      // }).done(function(data) {
+      //   // 處理回傳資料
+      //   $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      // }).fail(function (jqXHR) {
+      //   // 錯誤處理
+      //   $('<div>' + jqXHR.responseText + '</div>').appendTo($('.ctrl-message'));
+      //   console.log(jqXHR);
+      // });
+
+
+
+      // /**
+      //  * 刪除一筆
+      //  */
+      // $.ajax({
+      //   method: 'DELETE',
+      //   // 刪除id為2的資料
+      //   url: self._ajaxUrls.accountApi + '/2',
+      //   dataType: 'json',
+      // }).done(function(data) {
+      //   // 處理回傳資料
+      //   $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      // }).fail(function (jqXHR) {
+      //   // 錯誤處理
+      //   $('<div>' + jqXHR.responseText + '</div>').appendTo($('.ctrl-message'));
+      //   console.log(jqXHR);
+      // });
 
       /**
        * 事件綁定
