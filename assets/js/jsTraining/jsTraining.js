@@ -108,6 +108,19 @@
     var _evenBind = function() {
       console.log('_evenBind');
 
+      // 按下按鈕時，變更tag:h1文字為「** Javascript Training **」
+      $('.ctrl-btn').on('click', function() {
+        $('h1').text('** Javascript Training **');
+      });
+
+      // 偵測滑鼠座標
+      $(document).on('mousemove', function(ev) {
+        ev = ev || window.event;
+        if (ev.pageX || ev.pageY) {
+          $('.ctrl-message').html('X: ' + ev.pageX + '<br>Y: ' + ev.pageY);
+        }
+      });
+      
       /**
        * 事件 - 增加
        */
