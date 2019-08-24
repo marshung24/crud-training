@@ -96,6 +96,19 @@
     var _initialize = function() {
       console.log('_initialize');
 
+      // 讀取tag:h1內容字串
+      var text = $('h1').text();
+      // 在DevTools的console介面中印出
+      console.log('----');
+      console.log('tag:h1的內容為：' + text);
+      console.log('----');
+
+      // 寫入「測試字串」至id="ctrl-message"的元件
+      $('#ctrl-message').text('測試字串');
+
+      // 變更class="ctrl-btn"按鈕的元件的顏色為btn-danger
+      $('.ctrl-btn').removeClass('btn-warning').addClass('btn-danger');
+
       /**
        * 事件綁定
        */
