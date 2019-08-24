@@ -96,42 +96,6 @@
     var _initialize = function() {
       console.log('_initialize');
 
-      // 移除按鈕
-      $('.ctrl-btn').remove();
-
-      /**
-       * 建立表格
-       */
-      // 建立變數
-      var tmp, table, thead, tbody, tr, th, td;
-      // 建立暫存容器
-      tmp = $('<div></div>');
-      // 建立thead區塊資料
-      thead = $('<thead></thead>').appendTo(tmp);
-      tr = $('<tr></tr>').appendTo(thead);
-      th = $('<th></th>').appendTo(tr);
-      th.text('Count');
-      th = $('<th></th>').appendTo(tr);
-      th.text('Name');
-      th = $('<th>Gender</th>').appendTo(tr);
-
-      // 建立tbody區塊資料
-      tbody = $('<tbody></tbody>').appendTo(tmp);
-      tr = $('<tr></tr>').appendTo(tbody);
-      td = $('<td></td>').appendTo(tr);
-      td.text('1');
-      td = $('<td></td>').appendTo(tr);
-      td.text('Joe');
-      td = $('<td>male</td>').appendTo(tr);
-
-      // 取得table元件
-      table = $('.ctrl-table');
-      // 將暫存容器內容移至table元件
-      tmp.children().appendTo(table);
-
-      // 印出table元件HTML碼
-      console.log(table.html());
-
       /**
        * 事件綁定
        */
